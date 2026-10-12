@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Core Category Pages -->
+  <url>
+    <loc>https://navodayapack.in/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://navodayapack.in/products</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://navodayapack.in/hdpe-drums</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://navodayapack.in/fiber-drums</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://navodayapack.in/composite-containers</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://navodayapack.in/contact-us</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Individual HDPE Drum Pages -->
+  <url><loc>https://navodayapack.in/product/hdpe-6-ltrs</loc><priority>0.8</priority></url>
+  <url><loc>https://navodayapack.in/product/hdpe-20-ltrs</loc><priority>0.8</priority></url>
+  <url><loc>https://navodayapack.in/product/hdpe-30-ltrs</loc><priority>0.8</priority></url>
+  <url><loc>https://navodayapack.in/product/hdpe-40-ltrs</loc><priority>0.8</priority></url>
+  <url><loc>https://navodayapack.in/product/hdpe-50-ltrs</loc><priority>0.8</priority></url>
+  <url><loc>https://navodayapack.in/product/hdpe-50-ltrs-575h</loc><priority>0.8</priority></url>
+  <url><loc>https://navodayapack.in/product/hdpe-50-ltrs-620h</loc><priority>0.8</priority></url>
+  <url><loc>https://navodayapack.in/product/hdpe-65-ltrs-620h</loc><priority>0.8</priority></url>
+  <url><loc>https://navodayapack.in/product/hdpe-65-ltrs-640h</loc><priority>0.8</priority></url>
+  <url><loc>https://navodayapack.in/product/hdpe-70-ltrs</loc><priority>0.8</priority></url>
+  <url><loc>https://navodayapack.in/product/hdpe-80-ltrs-657h</loc><priority>0.8</priority></url>
+  <url><loc>https://navodayapack.in/product/hdpe-80-ltrs-710h</loc><priority>0.8</priority></url>
+  <url><loc>https://navodayapack.in/product/hdpe-90-ltrs</loc><priority>0.8</priority></url>
+  <url><loc>https://navodayapack.in/product/hdpe-100-ltrs</loc><priority>0.8</priority></url>
+  <url><loc>https://navodayapack.in/product/hdpe-120-ltrs</loc><priority>0.8</priority></url>
+
+  <!-- Individual Fibre Drum Pages -->
+  <url><loc>https://navodayapack.in/product/fiber-drum-14x21</loc><priority>0.8</priority></url>
+  <url><loc>https://navodayapack.in/product/fiber-drum-16x21</loc><priority>0.8</priority></url>
+  <url><loc>https://navodayapack.in/product/fiber-drum-18x22</loc><priority>0.8</priority></url>
+  <url><loc>https://navodayapack.in/product/fiber-drum-18x30</loc><priority>0.8</priority></url>
+  <url><loc>https://navodayapack.in/product/fiber-drum-10-dia</loc><priority>0.8</priority></url>
+  <url><loc>https://navodayapack.in/product/fiber-drum-12-dia</loc><priority>0.8</priority></url>
+  <url><loc>https://navodayapack.in/product/fiber-drum-15-dia</loc><priority>0.8</priority></url>
+  <url><loc>https://navodayapack.in/product/fiber-drum-20-dia</loc><priority>0.8</priority></url>
+
+  <!-- Individual Composite Container Pages -->
+  <url><loc>https://navodayapack.in/product/composite-container-75mm-custom</loc><priority>0.8</priority></url>
+  <url><loc>https://navodayapack.in/product/composite-container-75mm-retail</loc><priority>0.8</priority></url>
+</urlset>

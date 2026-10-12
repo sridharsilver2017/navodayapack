@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #102A43;
+  --color-navy-dark: #0B1D2F;
+  --color-navy-light: #1E3A5F;
+  --color-blue-primary: #2563EB;
+  --color-blue-hover: #1D4ED8;
+  --color-blue-light: #EFF6FF;
+  --color-charcoal: #171C24;
+  --color-charcoal-muted: #486581;
+  --color-light-grey: #F1F5F9;
+  --color-border-subtle: #E2E8F0;
+  --color-border-dark: #243B53;
+
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* Fluid typography tokens */
+.fluid-hero-title {
+  font-size: clamp(2.25rem, 5vw + 1rem, 4.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.fluid-section-title {
+  font-size: clamp(1.75rem, 3.5vw + 0.5rem, 3rem);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+.fluid-page-title {
+  font-size: clamp(2rem, 4vw + 0.75rem, 3.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+/* Industrial Grid and Texture Accents */
+.industrial-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+.industrial-grid-dark {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(16, 42, 67, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(16, 42, 67, 0.06) 1px, transparent 1px);
+}
+
+/* Editorial Spec Table styling */
+.spec-table-row:nth-child(even) {
+  background-color: #F8FAFC;
+}
+
+/* Accessible focus ring */
+*:focus-visible {
+  outline: 2px solid #2563EB;
+  outline-offset: 2px;
+}
+
+/* Smooth motion & reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print optimization for PDF TDS sheets */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  header, footer, nav, .no-print {
+    display: none !important;
+  }
+  #printable-tds-sheet {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+}
+
