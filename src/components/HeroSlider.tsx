@@ -164,8 +164,8 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onRequestQuote }) => {
       role="region"
       aria-label="Industrial Packaging Hero Showcase"
     >
-      {/* Background Slides with Ken Burns motion & Crossfade */}
-      <div className="relative h-[620px] sm:h-[660px] lg:h-[720px] w-full overflow-hidden">
+      {/* Slider Container with responsive min-height and clear bottom buffer */}
+      <div className="relative min-h-[660px] sm:min-h-[680px] lg:min-h-[720px] w-full overflow-hidden flex flex-col justify-between">
         {SLIDES.map((slide, index) => {
           const isActive = index === currentSlide;
           return (
@@ -184,20 +184,20 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onRequestQuote }) => {
               />
 
               {/* Deep Multi-Layer Vignette & Corporate Navy Gradient Overlays */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0B1D2F] via-[#0B1D2F]/90 to-[#0B1D2F]/65" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#0B1D2F] via-[#0B1D2F]/92 to-[#0B1D2F]/65" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0A1624] via-transparent to-black/40" />
               <div className="absolute inset-0 industrial-grid opacity-20" />
             </div>
           );
         })}
 
-        {/* Foreground Content Container */}
-        <div className="relative z-20 max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center pt-8 pb-16">
+        {/* Foreground Content Container - uses generous top & bottom padding */}
+        <div className="relative z-20 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 lg:pt-14 pb-28 sm:pb-32 lg:pb-36 my-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left Content Column */}
-            <div className="lg:col-span-7 space-y-5 animate-in fade-in slide-in-from-left duration-500">
+            <div className="lg:col-span-7 space-y-4 animate-in fade-in slide-in-from-left duration-500">
               {/* Top Category Badge */}
-              <div className="inline-flex items-center space-x-2.5 bg-blue-950/90 border border-blue-500/40 text-blue-300 text-xs px-3.5 py-1.5 rounded-full font-mono uppercase tracking-wider backdrop-blur-md shadow-lg">
+              <div className="inline-flex items-center space-x-2 bg-blue-950/90 border border-blue-500/40 text-blue-300 text-xs px-3 py-1 rounded-full font-mono uppercase tracking-wider backdrop-blur-md shadow-lg">
                 <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
                 <span className="font-bold text-white">{activeSlideData.badgeCategory}</span>
                 <span className="text-blue-400">•</span>
@@ -205,24 +205,24 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onRequestQuote }) => {
               </div>
 
               {/* Main Headline */}
-              <h1 className="fluid-hero-title font-extrabold font-display text-white tracking-tight leading-none">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-extrabold font-display text-white tracking-tight leading-[1.15]">
                 {activeSlideData.title}{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-white block mt-1">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-white block sm:inline lg:block">
                   {activeSlideData.titleHighlight}
                 </span>
               </h1>
 
               {/* Subtitle */}
-              <p className="text-sm sm:text-base lg:text-lg text-slate-200 max-w-2xl font-normal leading-relaxed text-shadow-sm">
+              <p className="text-xs sm:text-sm lg:text-base text-slate-200 max-w-xl font-normal leading-relaxed text-shadow-sm">
                 {activeSlideData.subtitle}
               </p>
 
               {/* Key Bullet Highlights */}
-              <div className="flex flex-wrap gap-2.5 pt-1 text-xs font-mono">
+              <div className="flex flex-wrap gap-2 pt-0.5 text-xs font-mono">
                 {activeSlideData.highlights.map((item, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center space-x-2 bg-slate-900/80 border border-slate-700/80 text-slate-200 px-3 py-1.5 rounded-md backdrop-blur-md"
+                    className="flex items-center space-x-1.5 bg-slate-900/85 border border-slate-700/80 text-slate-200 px-2.5 py-1 rounded text-[11px] backdrop-blur-md"
                   >
                     <CheckCircle2 className="w-3.5 h-3.5 text-blue-400 shrink-0" />
                     <span>{item}</span>
@@ -231,10 +231,10 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onRequestQuote }) => {
               </div>
 
               {/* Action Buttons */}
-              <div className="pt-4 flex flex-wrap items-center gap-3 sm:gap-4">
+              <div className="pt-2 flex flex-wrap items-center gap-3">
                 <Link
                   to={activeSlideData.primaryLink}
-                  className="bg-[#2563EB] hover:bg-[#1D4ED8] text-white px-7 py-3.5 rounded-md font-semibold text-sm tracking-wide transition-all shadow-xl hover:shadow-2xl hover:scale-[1.02] active:scale-98 inline-flex items-center space-x-2 cursor-pointer group"
+                  className="bg-[#2563EB] hover:bg-[#1D4ED8] text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-md font-semibold text-xs sm:text-sm tracking-wide transition-all shadow-xl hover:shadow-2xl hover:scale-[1.02] active:scale-98 inline-flex items-center space-x-2 cursor-pointer group"
                 >
                   <span>{activeSlideData.primaryLinkText}</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -243,7 +243,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onRequestQuote }) => {
                 <button
                   type="button"
                   onClick={() => onRequestQuote(activeSlideData.badgeCategory)}
-                  className="bg-slate-800/90 hover:bg-slate-700/90 text-white px-6 py-3.5 rounded-md font-semibold text-sm tracking-wide border border-slate-600 transition-all hover:scale-[1.02] active:scale-98 inline-flex items-center space-x-2 cursor-pointer backdrop-blur-md shadow-lg"
+                  className="bg-slate-800/90 hover:bg-slate-700/90 text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-md font-semibold text-xs sm:text-sm tracking-wide border border-slate-600 transition-all hover:scale-[1.02] active:scale-98 inline-flex items-center space-x-2 cursor-pointer backdrop-blur-md shadow-lg"
                 >
                   <span>Request Instant Quotation</span>
                 </button>
@@ -253,20 +253,20 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onRequestQuote }) => {
             {/* Right Interactive Preview Card */}
             <div className="hidden lg:block lg:col-span-5">
               <div className="relative mx-auto max-w-md">
-                <div className="bg-gradient-to-b from-slate-900/90 to-slate-950/90 border border-slate-700/80 rounded-2xl p-6 shadow-2xl backdrop-blur-xl relative overflow-hidden group">
+                <div className="bg-gradient-to-b from-slate-900/95 to-slate-950/95 border border-slate-700/80 rounded-2xl p-5 shadow-2xl backdrop-blur-xl relative overflow-hidden group">
                   {/* Subtle top glare */}
                   <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-sky-400 to-transparent" />
 
                   {/* Header info */}
-                  <div className="flex items-center justify-between text-xs font-mono pb-3 border-b border-slate-800">
+                  <div className="flex items-center justify-between text-xs font-mono pb-2.5 border-b border-slate-800">
                     <span className="text-blue-400 uppercase font-semibold">
                       {activeSlideData.badgeCategory}
                     </span>
-                    <span className="text-slate-400">Kazipally IDA Plant</span>
+                    <span className="text-slate-400 text-[11px]">Kazipally IDA Plant</span>
                   </div>
 
                   {/* Center Visual */}
-                  <div className="relative h-60 w-full flex items-center justify-center p-3 my-2">
+                  <div className="relative h-48 sm:h-52 w-full flex items-center justify-center p-2 my-2">
                     {activeSlideData.cutoutImage ? (
                       <img
                         src={activeSlideData.cutoutImage}
@@ -287,12 +287,12 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onRequestQuote }) => {
 
                   {/* Stat badge footer */}
                   {activeSlideData.statBadge && (
-                    <div className="mt-3 pt-3 border-t border-slate-800 flex items-center justify-between">
+                    <div className="mt-2.5 pt-2.5 border-t border-slate-800 flex items-center justify-between">
                       <div>
-                        <div className="text-xl font-extrabold font-display text-white">
+                        <div className="text-lg font-extrabold font-display text-white">
                           {activeSlideData.statBadge.value}
                         </div>
-                        <div className="text-[11px] text-slate-400 font-mono">
+                        <div className="text-[10px] text-slate-400 font-mono">
                           {activeSlideData.statBadge.label}
                         </div>
                       </div>
@@ -315,26 +315,26 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onRequestQuote }) => {
         <button
           type="button"
           onClick={prevSlide}
-          className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-slate-900/70 hover:bg-blue-600 text-white border border-slate-700/80 hover:border-blue-500 flex items-center justify-center backdrop-blur-md transition-all duration-200 cursor-pointer shadow-xl hover:scale-110 active:scale-95"
+          className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-slate-900/80 hover:bg-blue-600 text-white border border-slate-700/80 hover:border-blue-500 flex items-center justify-center backdrop-blur-md transition-all duration-200 cursor-pointer shadow-xl hover:scale-110 active:scale-95"
           aria-label="Previous Slide"
         >
-          <ChevronLeft className="w-6 h-6" />
+          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
 
         <button
           type="button"
           onClick={nextSlide}
-          className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-slate-900/70 hover:bg-blue-600 text-white border border-slate-700/80 hover:border-blue-500 flex items-center justify-center backdrop-blur-md transition-all duration-200 cursor-pointer shadow-xl hover:scale-110 active:scale-95"
+          className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-slate-900/80 hover:bg-blue-600 text-white border border-slate-700/80 hover:border-blue-500 flex items-center justify-center backdrop-blur-md transition-all duration-200 cursor-pointer shadow-xl hover:scale-110 active:scale-95"
           aria-label="Next Slide"
         >
-          <ChevronRight className="w-6 h-6" />
+          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
 
-        {/* Bottom Slide Controller Bar */}
-        <div className="absolute bottom-4 sm:bottom-6 left-0 right-0 z-30">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
+        {/* Bottom Slide Controller Bar - strictly anchored with high z-index and clean backdrop */}
+        <div className="absolute bottom-3 sm:bottom-4 left-0 right-0 z-30 pointer-events-auto">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2.5">
             {/* Slide Quick Select Tabs */}
-            <div className="flex items-center space-x-2 bg-slate-900/80 p-1.5 rounded-full border border-slate-700/80 backdrop-blur-md shadow-2xl">
+            <div className="flex items-center space-x-1.5 bg-slate-900/90 p-1.5 rounded-full border border-slate-700/80 backdrop-blur-md shadow-2xl overflow-x-auto max-w-full">
               {SLIDES.map((slide, idx) => {
                 const isSelected = idx === currentSlide;
                 return (
@@ -342,7 +342,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onRequestQuote }) => {
                     key={slide.id}
                     type="button"
                     onClick={() => goToSlide(idx)}
-                    className={`px-3 sm:px-4 py-1.5 rounded-full text-[11px] sm:text-xs font-mono uppercase tracking-wider transition-all duration-300 cursor-pointer flex items-center space-x-2 ${
+                    className={`px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-mono uppercase tracking-wider transition-all duration-300 cursor-pointer flex items-center space-x-1.5 shrink-0 ${
                       isSelected
                         ? 'bg-[#2563EB] text-white font-bold shadow-md'
                         : 'text-slate-400 hover:text-white hover:bg-slate-800'
@@ -356,14 +356,14 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onRequestQuote }) => {
             </div>
 
             {/* Play/Pause & Autoplay Status */}
-            <div className="flex items-center space-x-3 text-xs font-mono text-slate-400 bg-slate-900/70 px-3 py-1.5 rounded-full border border-slate-800 backdrop-blur-md">
+            <div className="flex items-center space-x-2.5 text-xs font-mono text-slate-400 bg-slate-900/85 px-3 py-1 rounded-full border border-slate-800 backdrop-blur-md shrink-0">
               <button
                 type="button"
                 onClick={() => setIsPaused(!isPaused)}
                 className="hover:text-white transition-colors cursor-pointer flex items-center space-x-1"
                 aria-label={isPaused ? 'Resume autoplay' : 'Pause autoplay'}
               >
-                {isPaused ? <Play className="w-3.5 h-3.5 text-emerald-400" /> : <Pause className="w-3.5 h-3.5" />}
+                {isPaused ? <Play className="w-3 h-3 text-emerald-400" /> : <Pause className="w-3 h-3" />}
                 <span className="text-[10px] uppercase">{isPaused ? 'Paused' : 'Auto'}</span>
               </button>
               <span className="text-slate-600">|</span>
