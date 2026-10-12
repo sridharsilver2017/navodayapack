@@ -113,36 +113,33 @@ export const ClientsCarousel: React.FC = () => {
 
       {/* VIEW 1: DUAL-TRACK CONTINUOUS SMOOTH MARQUEE RIBBON */}
       {viewMode === 'ribbon' && (
-        <div className="space-y-4 w-full">
+        <div className="space-y-6 w-full">
           {/* Row 1: Leftward continuous scroll */}
-          <div className="overflow-hidden relative w-full py-1">
+          <div className="overflow-hidden relative w-full py-2">
             {/* Edge fade gradients */}
-            <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none" />
+            <div className="absolute left-0 top-0 bottom-0 w-20 sm:w-36 bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-20 sm:w-36 bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none" />
 
-            <div className="animate-marquee space-x-4 pl-4">
+            <div className="animate-marquee space-x-5 pl-4">
               {row1.map((client, idx) => (
                 <div
                   key={`r1-${client.id}-${idx}`}
-                  className="bg-white rounded-xl border border-slate-200/90 p-4 shadow-sm hover:shadow-xl hover:border-blue-400 hover:-translate-y-1 transition-all duration-300 w-56 sm:w-64 shrink-0 flex flex-col items-center justify-between group cursor-default"
+                  className="bg-white rounded-2xl border border-slate-200/90 p-5 shadow-sm hover:shadow-xl hover:border-blue-400 hover:-translate-y-1 transition-all duration-300 w-64 sm:w-80 shrink-0 flex flex-col items-center justify-between group cursor-default"
                 >
-                  {/* Logo Image in FULL ORIGINAL COLOR */}
-                  <div className="h-16 w-full flex items-center justify-center p-2 rounded-lg bg-slate-50/50 group-hover:bg-white transition-colors">
+                  {/* Big High-Impact Logo Container */}
+                  <div className="h-28 sm:h-32 w-full flex items-center justify-center p-3 sm:p-4 rounded-xl bg-slate-50/70 group-hover:bg-white border border-slate-100 group-hover:border-blue-100 transition-colors">
                     <img
                       src={client.logo}
                       alt={`${client.name} official logo`}
-                      className="max-h-12 max-w-[90%] object-contain filter-none drop-shadow-xs transition-transform duration-300 group-hover:scale-105"
+                      className="max-h-20 sm:max-h-24 max-w-[92%] w-auto object-contain filter-none drop-shadow-xs transition-transform duration-300 group-hover:scale-105"
                       loading="lazy"
                     />
                   </div>
 
-                  <div className="text-center w-full mt-3 pt-2.5 border-t border-slate-100">
-                    <h4 className="text-xs sm:text-sm font-bold text-slate-900 font-display truncate">
+                  <div className="text-center w-full mt-3.5 pt-2.5 border-t border-slate-100">
+                    <h4 className="text-sm sm:text-base font-bold text-slate-900 font-display truncate">
                       {client.name}
                     </h4>
-                    <span className="text-[10px] font-mono font-medium text-blue-700 bg-blue-50/90 border border-blue-100 px-2 py-0.5 rounded-full inline-block mt-1">
-                      {client.sector}
-                    </span>
                   </div>
                 </div>
               ))}
@@ -150,34 +147,31 @@ export const ClientsCarousel: React.FC = () => {
           </div>
 
           {/* Row 2: Rightward counter-continuous scroll */}
-          <div className="overflow-hidden relative w-full py-1">
+          <div className="overflow-hidden relative w-full py-2">
             {/* Edge fade gradients */}
-            <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none" />
+            <div className="absolute left-0 top-0 bottom-0 w-20 sm:w-36 bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-20 sm:w-36 bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none" />
 
-            <div className="animate-marquee-reverse space-x-4 pl-4">
+            <div className="animate-marquee-reverse space-x-5 pl-4">
               {row2.map((client, idx) => (
                 <div
                   key={`r2-${client.id}-${idx}`}
-                  className="bg-white rounded-xl border border-slate-200/90 p-4 shadow-sm hover:shadow-xl hover:border-blue-400 hover:-translate-y-1 transition-all duration-300 w-56 sm:w-64 shrink-0 flex flex-col items-center justify-between group cursor-default"
+                  className="bg-white rounded-2xl border border-slate-200/90 p-5 shadow-sm hover:shadow-xl hover:border-blue-400 hover:-translate-y-1 transition-all duration-300 w-64 sm:w-80 shrink-0 flex flex-col items-center justify-between group cursor-default"
                 >
-                  {/* Logo Image in FULL ORIGINAL COLOR */}
-                  <div className="h-16 w-full flex items-center justify-center p-2 rounded-lg bg-slate-50/50 group-hover:bg-white transition-colors">
+                  {/* Big High-Impact Logo Container */}
+                  <div className="h-28 sm:h-32 w-full flex items-center justify-center p-3 sm:p-4 rounded-xl bg-slate-50/70 group-hover:bg-white border border-slate-100 group-hover:border-blue-100 transition-colors">
                     <img
                       src={client.logo}
                       alt={`${client.name} official logo`}
-                      className="max-h-12 max-w-[90%] object-contain filter-none drop-shadow-xs transition-transform duration-300 group-hover:scale-105"
+                      className="max-h-20 sm:max-h-24 max-w-[92%] w-auto object-contain filter-none drop-shadow-xs transition-transform duration-300 group-hover:scale-105"
                       loading="lazy"
                     />
                   </div>
 
-                  <div className="text-center w-full mt-3 pt-2.5 border-t border-slate-100">
-                    <h4 className="text-xs sm:text-sm font-bold text-slate-900 font-display truncate">
+                  <div className="text-center w-full mt-3.5 pt-2.5 border-t border-slate-100">
+                    <h4 className="text-sm sm:text-base font-bold text-slate-900 font-display truncate">
                       {client.name}
                     </h4>
-                    <span className="text-[10px] font-mono font-medium text-emerald-700 bg-emerald-50/90 border border-emerald-100 px-2 py-0.5 rounded-full inline-block mt-1">
-                      {client.sector}
-                    </span>
                   </div>
                 </div>
               ))}
@@ -208,28 +202,25 @@ export const ClientsCarousel: React.FC = () => {
           </div>
 
           {/* Grid Layout */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-5">
             {filteredGridClients.map((client) => (
               <div
                 key={client.id}
-                className="bg-white rounded-xl border border-slate-200 p-4 flex flex-col items-center justify-between text-center transition-all duration-300 hover:shadow-xl hover:border-blue-400 hover:-translate-y-1 group"
+                className="bg-white rounded-2xl border border-slate-200 p-5 flex flex-col items-center justify-between text-center transition-all duration-300 hover:shadow-xl hover:border-blue-400 hover:-translate-y-1 group"
               >
-                {/* Logo Image in FULL ORIGINAL COLOR */}
-                <div className="h-16 w-full flex items-center justify-center p-2 rounded-lg bg-slate-50/50 group-hover:bg-white transition-colors mb-2">
+                {/* Big High-Impact Logo Container */}
+                <div className="h-28 sm:h-32 w-full flex items-center justify-center p-3 sm:p-4 rounded-xl bg-slate-50/70 group-hover:bg-white border border-slate-100 group-hover:border-blue-100 transition-colors mb-3">
                   <img
                     src={client.logo}
                     alt={`${client.name} official logo`}
-                    className="max-h-12 max-w-[90%] object-contain filter-none drop-shadow-xs transition-transform duration-300 group-hover:scale-105"
+                    className="max-h-20 sm:max-h-24 max-w-[92%] w-auto object-contain filter-none drop-shadow-xs transition-transform duration-300 group-hover:scale-105"
                     loading="lazy"
                   />
                 </div>
 
-                <div className="w-full pt-2 border-t border-slate-100">
-                  <span className="text-xs font-bold text-slate-900 font-display block line-clamp-1">
+                <div className="w-full pt-2.5 border-t border-slate-100">
+                  <span className="text-xs sm:text-sm font-bold text-slate-900 font-display block line-clamp-1">
                     {client.name}
-                  </span>
-                  <span className="text-[10px] font-mono text-blue-600 bg-blue-50/80 px-2 py-0.5 rounded-full inline-block mt-1">
-                    {client.sector}
                   </span>
                 </div>
               </div>
