@@ -124,11 +124,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onRequestQuote }) => {
                 }}
               />
             </div>
-            <div className="flex flex-col">
-              <span className="text-lg sm:text-xl font-bold tracking-tight font-display text-white group-hover:text-blue-300 transition-colors">
+            <div className="flex flex-col min-w-0">
+              <span className="text-base sm:text-xl font-bold tracking-tight font-display text-white group-hover:text-blue-300 transition-colors">
                 NAVODAYA PACK
               </span>
-              <span className="text-[10px] tracking-wider uppercase text-slate-400 font-mono">
+              <span className="text-[8.5px] sm:text-[10px] tracking-tight sm:tracking-wider uppercase text-slate-400 font-mono whitespace-nowrap">
                 Packing Industries India Pvt Ltd
               </span>
             </div>
