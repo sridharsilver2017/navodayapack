@@ -154,6 +154,32 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onRequestQuote }) => {
     };
   }, [currentSlide, isPaused]);
 
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchEndX, setTouchEndX] = useState<number | null>(null);
+
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEndX(null);
+    setTouchStartX(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEndX(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStartX || !touchEndX) return;
+    const distance = touchStartX - touchEndX;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    if (isLeftSwipe) {
+      nextSlide();
+    } else if (isRightSwipe) {
+      prevSlide();
+    }
+  };
+
   const activeSlideData = SLIDES[currentSlide];
 
   return (
@@ -161,6 +187,9 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onRequestQuote }) => {
       className="relative w-full bg-[#0A1624] text-white overflow-hidden select-none border-b border-slate-800"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
       role="region"
       aria-label="Industrial Packaging Hero Showcase"
     >
@@ -191,8 +220,8 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onRequestQuote }) => {
           );
         })}
 
-        {/* Foreground Content Container - uses generous top & bottom padding */}
-        <div className="relative z-20 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 lg:pt-14 pb-28 sm:pb-32 lg:pb-36 my-auto">
+        {/* Foreground Content Container - safe padding on all breakpoints prevents any overlap */}
+        <div className="relative z-20 max-w-7xl mx-auto w-full px-4 sm:px-8 md:px-16 lg:px-8 pt-8 sm:pt-12 lg:pt-14 pb-28 sm:pb-32 lg:pb-36 my-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left Content Column */}
             <div className="lg:col-span-7 space-y-4 animate-in fade-in slide-in-from-left duration-500">
@@ -311,48 +340,68 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onRequestQuote }) => {
           </div>
         </div>
 
-        {/* Navigation Arrows (Prev / Next) */}
+        {/* Navigation Arrows (Prev / Next) - Desktop & Tablet only */}
         <button
           type="button"
           onClick={prevSlide}
-          className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-slate-900/80 hover:bg-blue-600 text-white border border-slate-700/80 hover:border-blue-500 flex items-center justify-center backdrop-blur-md transition-all duration-200 cursor-pointer shadow-xl hover:scale-110 active:scale-95"
+          className="hidden md:flex absolute left-4 lg:left-6 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-slate-900/80 hover:bg-blue-600 text-white border border-slate-700/80 hover:border-blue-500 items-center justify-center backdrop-blur-md transition-all duration-200 cursor-pointer shadow-xl hover:scale-110 active:scale-95"
           aria-label="Previous Slide"
         >
-          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+          <ChevronLeft className="w-6 h-6" />
         </button>
 
         <button
           type="button"
           onClick={nextSlide}
-          className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-slate-900/80 hover:bg-blue-600 text-white border border-slate-700/80 hover:border-blue-500 flex items-center justify-center backdrop-blur-md transition-all duration-200 cursor-pointer shadow-xl hover:scale-110 active:scale-95"
+          className="hidden md:flex absolute right-4 lg:right-6 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-slate-900/80 hover:bg-blue-600 text-white border border-slate-700/80 hover:border-blue-500 items-center justify-center backdrop-blur-md transition-all duration-200 cursor-pointer shadow-xl hover:scale-110 active:scale-95"
           aria-label="Next Slide"
         >
-          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+          <ChevronRight className="w-6 h-6" />
         </button>
 
         {/* Bottom Slide Controller Bar - strictly anchored with high z-index and clean backdrop */}
         <div className="absolute bottom-3 sm:bottom-4 left-0 right-0 z-30 pointer-events-auto">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2.5">
-            {/* Slide Quick Select Tabs */}
-            <div className="flex items-center space-x-1.5 bg-slate-900/90 p-1.5 rounded-full border border-slate-700/80 backdrop-blur-md shadow-2xl overflow-x-auto max-w-full">
-              {SLIDES.map((slide, idx) => {
-                const isSelected = idx === currentSlide;
-                return (
-                  <button
-                    key={slide.id}
-                    type="button"
-                    onClick={() => goToSlide(idx)}
-                    className={`px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-mono uppercase tracking-wider transition-all duration-300 cursor-pointer flex items-center space-x-1.5 shrink-0 ${
-                      isSelected
-                        ? 'bg-[#2563EB] text-white font-bold shadow-md'
-                        : 'text-slate-400 hover:text-white hover:bg-slate-800'
-                    }`}
-                  >
-                    <span>0{idx + 1}</span>
-                    <span className="hidden md:inline">{slide.badgeCategory}</span>
-                  </button>
-                );
-              })}
+            {/* Slide Quick Select Tabs with Mobile Arrow Controls */}
+            <div className="flex items-center space-x-2">
+              <button
+                type="button"
+                onClick={prevSlide}
+                className="md:hidden w-8 h-8 rounded-full bg-slate-900/90 border border-slate-700/80 text-white flex items-center justify-center hover:bg-blue-600 active:scale-90 transition-all shadow-lg cursor-pointer shrink-0"
+                aria-label="Previous Slide"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+
+              <div className="flex items-center space-x-1.5 bg-slate-900/90 p-1.5 rounded-full border border-slate-700/80 backdrop-blur-md shadow-2xl overflow-x-auto max-w-full">
+                {SLIDES.map((slide, idx) => {
+                  const isSelected = idx === currentSlide;
+                  return (
+                    <button
+                      key={slide.id}
+                      type="button"
+                      onClick={() => goToSlide(idx)}
+                      className={`px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-mono uppercase tracking-wider transition-all duration-300 cursor-pointer flex items-center space-x-1.5 shrink-0 ${
+                        isSelected
+                          ? 'bg-[#2563EB] text-white font-bold shadow-md'
+                          : 'text-slate-400 hover:text-white hover:bg-slate-800'
+                      }`}
+                    >
+                      <span>0{idx + 1}</span>
+                      <span className="hidden md:inline">{slide.badgeCategory}</span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              <button
+                type="button"
+                onClick={nextSlide}
+                className="md:hidden w-8 h-8 rounded-full bg-slate-900/90 border border-slate-700/80 text-white flex items-center justify-center hover:bg-blue-600 active:scale-90 transition-all shadow-lg cursor-pointer shrink-0"
+                aria-label="Next Slide"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
             </div>
 
             {/* Play/Pause & Autoplay Status */}
